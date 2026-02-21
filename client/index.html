@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Học Cùng ET - Music Dashboard</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(120deg, #f0f4ff, #d9e4ff);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            /* Header */
+            .header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+            .header img {
+                width: 50px;
+                height: 50px;
+                margin-right: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+                color: #333;
+                margin: 0;
+            }
+
+          
+            .music-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-gap: 20px;
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .music-card {
+                background: #fff;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                text-align: center;
+                cursor: pointer;
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
+
+            .music-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+            }
+
+            .music-card img {
+                width: 100%;
+                height: 120px;
+                /* padding-top: 100%; */
+                object-fit: cover;
+                object-position: center;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .music-card h3 {
+                margin: 10px;
+                font-size: 1em;
+                color: #333;
+            }
+
+            @media (max-width: 400px) {
+                .music-card h3 {
+                    font-size: 0.9em;
+                }
+
+                .header h1 {
+                    font-size: 1.4em;
+                }
+
+                .header img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+   
+        <div class="header">
+            <img src="./logo.png" alt="Logo">
+            <h1>Học Cùng ET</h1>
+        </div>
+
+      
+        <div class="music-grid">
+            <div class="music-card" onclick="playMusic(1)">
+                <img src="https://i.ytimg.com/vi/30KI5SuECuc/hqdefault.jpg" alt="Song 1">
+                <h3>Âm Thầm Bên Em</h3>
+            </div>
+            <div class="music-card" onclick="playMusic(2)">
+                <img src="https://danviet.ex-cdn.com/files/f1/upload/4-2012/images/2012-10-28/1434722167-281012_van-hoa_con-mua-ngang-qua_dan-viet.jpg"
+                    alt="Song 2">
+                <h3>Cơn Mưa Ngang Qua</h3>
+            </div>
+            <div class="music-card" onclick="playMusic(3)">
+                <img src="https://i.ytimg.com/vi/FJcBThfsJc0/maxresdefault.jpg" alt="Song 3">
+                <h3>Hồng Nhan</h3>
+            </div>
+            <div class="music-card" onclick="playMusic(4)">
+                <img src="https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_jpeg/thumb_video/2/2/e/8/22e8402961915ff5a64d4c83b64b7a01.jpg"
+                    alt="Song 4">
+                <h3>Bạc Phận</h3>
+            </div>
+        </div>
+
+        <script>
+            async function playMusic(songId) {
+                const apiUrls = [
+                    'http://172.20.10.3/A',
+                    'http://172.20.10.3/B',
+                    'http://172.20.10.3/C',
+                    'http://172.20.10.3/D'
+                ];
+
+                try {
+                    const response = await fetch(apiUrls[songId - 1]);
+                    const data = await response.json();
+                    console.log(data);
+                } catch (err) {
+                    console.error(err);
+                    alert('Error fetching song data.');
+                }
+            }
+        </script>
+
+    </body>
+
+</html>
