@@ -4,7 +4,7 @@ web:
 
 SDCARD:
 
-<img width="864" height="155" alt="image" src="https://github.com/user-attachments/assets/be06cef2-6f2a-4b0c-a277-76b5c4cbe6c4" />
+<img width="768" height="108" alt="image" src="https://github.com/user-attachments/assets/57072c54-22d0-4b8a-8a8b-89fa03ddf236" />
 
 
 WAV:
